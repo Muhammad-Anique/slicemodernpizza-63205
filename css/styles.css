@@ -1,0 +1,216 @@
+:root {
+    /* Color Palette */
+    --primary-red: #ef4444;
+    --primary-red-dark: #b91c1c;
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-800: #292524;
+    --stone-900: #1c1917;
+    --white: #ffffff;
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--stone-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--stone-800);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-red);
+}
+
+/* Navigation Utilities */
+.nav-scrolled {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    padding: 0.75rem 0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+/* Menu Filtering Transitions */
+.menu-item {
+    transition: var(--transition-smooth);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu-item.hidden {
+    display: none;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* Custom Interactive Menu Tabs */
+.menu-tab {
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.menu-tab.active {
+    background-color: var(--primary-red) !important;
+    color: var(--white) !important;
+    box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.3);
+}
+
+/* Card Hover Effects */
+.menu-card {
+    background: var(--white);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    border: 1px solid var(--stone-200);
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.menu-card img {
+    transition: transform 0.5s ease;
+}
+
+.menu-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Gallery Hover Layers */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(239, 68, 68, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Form Styles */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+    border-color: var(--primary-red) !important;
+}
+
+/* Section Decorators */
+#story::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--stone-50), transparent);
+    pointer-events: none;
+}
+
+/* Mobile Menu Logic Styling */
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+#mobile-menu.hidden {
+    transform: translateX(100%);
+    display: none;
+}
+
+#mobile-menu.visible {
+    transform: translateX(0);
+    display: flex;
+}
+
+.mobile-link {
+    transition: var(--transition-smooth);
+}
+
+.mobile-link:hover {
+    color: var(--primary-red);
+    transform: scale(1.1);
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 768px) {
+    #home h1 {
+        font-size: 3.5rem;
+        line-height: 1.1;
+    }
+    
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* Glassmorphism for specific UI elements */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Badge Styling */
+.badge-hot {
+    background: var(--primary-red);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+}
